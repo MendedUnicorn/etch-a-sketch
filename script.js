@@ -9,11 +9,11 @@ container.style.width = boardSize + "px"
 
 const btn = document.querySelector("button")
 btn.addEventListener("click", () => {
-    
+    grid = NaN
     do {
         grid = prompt("Enter a grid size. Max 100.")
     
-    } while (isNaN(grid) && grid < 101)
+    } while (isNaN(grid) || (grid > 100))
     createGrid(grid)
 })
 
@@ -31,8 +31,8 @@ function createGrid(size) {
     for (let i = 0; i < size*size; i++) {
         const div = document.createElement("div")
         div.classList.add("board")
-        div.style.height = boardSize / size + "px"
-        div.style.width = boardSize / size + "px"
+        div.style.height = (boardSize / size).toFixed(10) - 0.01 + "px"
+        div.style.width = (boardSize / size).toFixed(10) - 0.01 + "px"
         div.addEventListener("mouseover", ()=> {
             div.style.backgroundColor = colorSwitch ? randomColor(): "black"
         })
